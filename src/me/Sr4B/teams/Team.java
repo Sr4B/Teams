@@ -41,7 +41,7 @@ public class Team {
 	public boolean removePlayer(Player player)
 	{
 		List<Player> list = new ArrayList<Player>(Arrays.asList(players));
-		list.removeAll(Arrays.asList(player));
+		list.remove(player);
 		players = list.toArray(players);
 		return false;
 	}
