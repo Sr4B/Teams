@@ -4,27 +4,36 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.bukkit.Color;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 
 public class Team {
 
 	//Defining the basic varibles, refilled by the constructor;
-	final Color color;
+	final ChatColor color;
 	final String name;
-	final String id;
-	final String capacity;
+	final int id;
+	//final String capacity;
 	Player[] players;
-	
-	public Team (Color color, String name, String id, String capacity,  Player[] players)
+	//the default constructor , used mostly for importing team from the database
+	public Team (ChatColor color, String name, int id, Player[] players)
 	{
 		this.color = color;
 		this.name = name;
 		this.id = id;
-		this.capacity = capacity;
+		//this.capacity = capacity;
 		this.players = players;
 	}
+	//Another constructor for Players sorting.
+	public Team (ChatColor color, String name, int id)
+	{
+		this.color = color;
+		this.name = name;
+		this.id = id;
+		//this.capacity = capacity;
+	}
+	
 	// re turning the "player" Team;
 	public Team getTeam(Player player)
 	{

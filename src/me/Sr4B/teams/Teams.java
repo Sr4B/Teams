@@ -26,6 +26,7 @@ public class Teams extends JavaPlugin{
 		{
 			try{
 			Player[] players = Sender.getServer().getOnlinePlayers();
+			PlayersSort pm = new PlayersSort(players,Integer.parseInt(args[1]), Integer.parseInt(args[2]));
 			}
 			catch(Exception e)
 			{
