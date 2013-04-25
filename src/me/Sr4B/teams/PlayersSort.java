@@ -15,7 +15,7 @@ public class PlayersSort {
 
 	//some Variables to use in every object
 	String teamsNames[] = {"Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu"}; // 12 for now
-	HashMap<Player, String> log = new HashMap<Player, String>();
+	HashMap<String, String> log = new HashMap<String, String>();
 	
 	public PlayersSort(Player[] players, int teams, int playersPerTeam)
 	{
@@ -24,19 +24,19 @@ public class PlayersSort {
 		this.playersPerTeam = playersPerTeam;
 		for(int i = 0;i < players.length; i++)
 		{
-			log.put(players[i], "false");
+			log.put(players[i].getName(), "false");
 		}
 	}
 	
-	//a method to check if the choosen player is already in a team, false if not .
+	//a method to check if the chosen player is already in a team, false if not .
 	public boolean alreadyInTeam(Player player)
 	{
-		if(log.get(player).startsWith("t"))
+		if(log.get(player.getName()).startsWith("t"))
 			return true;
 		return false;
 	}
 	
-	//an algorithm to sort the players into thier teams, there will be <playersPerTeam> in every team , returting false in case of any problem.
+	//an algorithm to sort the players into their teams, there will be <playersPerTeam> in every team , returting false in case of any problem.
 	public boolean sortPlayers()
 	{
 		//12 Teams limit 
@@ -57,7 +57,7 @@ public class PlayersSort {
 					break;
 				done = true;
 				team.addPlayer(player);
-				log.put(player, "true");
+				log.put(player.getName(), "true");
 				player.sendMessage(Strings.TEAM_JOIN_MESSAGE);
 				}
 			}
