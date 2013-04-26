@@ -44,6 +44,8 @@ public class Team {
 	public boolean addPlayer(Player player)
 	{
 		players[players.length+1] = player;
+		player.setDisplayName(this.color + "["+this.name+"]" +" "+ player.getName());
+		player.chat("i'm in " + color + this.name + ChatColor.WHITE + " Team");
 		return false;
 	}
 	//removing a player from "this" Team, true if everything is ok, false if else

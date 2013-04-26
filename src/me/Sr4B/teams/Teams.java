@@ -1,5 +1,7 @@
 package me.Sr4B.teams;
 
+import me.Sr4B.teams.errorHandler.ErrorLogger;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,7 +12,7 @@ public class Teams extends JavaPlugin{
 	@Override
 	public void onEnable()
 	{
-		
+		ErrorLogger.register(this, "Teams", "me.Sr4B.teams", "09707");
 	}
 	
 	@Override
@@ -18,6 +20,8 @@ public class Teams extends JavaPlugin{
 	{
 		
 	}
+	
+	
 	
 	public boolean onCommand(Command cmd, CommandSender Sender, String cmdlabel, String[] args)
 	{
@@ -27,6 +31,7 @@ public class Teams extends JavaPlugin{
 			try{
 			Player[] players = Sender.getServer().getOnlinePlayers();
 			PlayersSort pm = new PlayersSort(players,Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+			pm.sortPlayers();
 			}
 			catch(Exception e)
 			{

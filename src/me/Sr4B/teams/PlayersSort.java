@@ -31,9 +31,9 @@ public class PlayersSort {
 	//a method to check if the chosen player is already in a team, false if not .
 	public boolean alreadyInTeam(Player player)
 	{
-		if(log.get(player.getName()).startsWith("t"))
-			return true;
-		return false;
+		if(log.get(player.getName()).startsWith("f"))
+			return false;
+		return true;
 	}
 	
 	//an algorithm to sort the players into their teams, there will be <playersPerTeam> in every team , returting false in case of any problem.
@@ -47,22 +47,28 @@ public class PlayersSort {
 			Team team = new Team(ChatColor.values()[i], teamsNames[i], i);
 			for(int q = 0; q < this.playersPerTeam; q++)
 			{
-				boolean done = false;
-				while(done == false)
+				int tries = 0;
+				while(tries < 50)
 				{
 				Random random = new Random();
 				int x = random.nextInt(players.length);
 				Player player = players[x];
+				tries++;
 				if(alreadyInTeam(player))
 					break;
-				done = true;
+				tries = 50;
 				team.addPlayer(player);
-				log.put(player.getName(), "true");
+				log.put(player.getName(), teamsNames[i]);
 				player.sendMessage(Strings.TEAM_JOIN_MESSAGE);
 				}
 			}
 		}
 		
-		return false;
+		return true;
+	}
+	
+	public Object getLog()
+	{
+		return log;
 	}
 }
